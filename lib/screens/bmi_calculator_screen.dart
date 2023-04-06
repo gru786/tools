@@ -11,7 +11,41 @@ class BmiCalculatorScreen extends StatefulWidget {
 class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
   bool femaleSelected = true;
   double sliderValue = 0;
+  double weight = 50;
+  double age = 20;
 
+  Future<void> _showMyDialog() async {
+    double height = (sliderValue *100 + 100)/100;
+    print(weight);
+    print(height);
+    double bmi = weight / (height * height);
+    print(bmi);
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Your BMI result!', style: TextStyle(fontSize: 18),),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children:  <Widget>[
+                Text(bmi.toString(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                Text('Would you like to approve of this message?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Approve'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
@@ -136,9 +170,9 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                 ),
               ),
 
-
               Row(
                 children: [
+                  //weight
                   Expanded(
                     child: Container(
                       height: screenHeight * 0.25,
@@ -149,43 +183,120 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                           });
                         },
                         child: Card(
-                          elevation: femaleSelected ? 10 : 5,
-                          color: femaleSelected
-                              ? Colors.grey.shade900
-                              : Colors.grey.shade800,
+                          elevation: 5,
+                          color: Colors.grey.shade800,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-
-                              Text('WEIGHT', style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-
-                              ),),
-
-                              Text('Female'),
+                              Text(
+                                'WEIGHT',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                weight.toInt().toString(),
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                      elevation: MaterialStatePropertyAll<double>(2),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        weight = weight - 1.0;
+                                      });
+                                    },
+                                    child: Icon(Icons.remove),
+                                  ),
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                      elevation: MaterialStatePropertyAll<double>(2),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        weight = weight + 1.0;
+                                      });
+                                    },
+                                    child: Icon(Icons.add),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
+
+                  //age
                   Expanded(
                     child: Container(
                       height: screenHeight * 0.25,
-                      child: Card(
-                        elevation:  5 ,
-                        color: Colors.grey.shade800,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.male_sharp,
-                              size: 85,
-                              color: Colors.white,
-                            ),
-
-                          ],
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            femaleSelected = !femaleSelected;
+                          });
+                        },
+                        child: Card(
+                          elevation: 5,
+                          color: Colors.grey.shade800,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'AGE',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                age.toInt().toString(),
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                      elevation: MaterialStatePropertyAll<double>(2),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        age = age - 1.0;
+                                      });
+                                    },
+                                    child: Icon(Icons.remove),
+                                  ),
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                      elevation: MaterialStatePropertyAll<double>(2),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        age = age + 1.0;
+                                      });
+                                    },
+                                    child: Icon(Icons.add),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -193,7 +304,23 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                 ],
               ),
 
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      fixedSize: MaterialStatePropertyAll<Size>(Size(200, screenHeight * 0.04)),
+                      elevation: MaterialStatePropertyAll<double>(3),
+                      padding: MaterialStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 20, vertical: 3)),
+                    ),
+                    onPressed: () {
+                      _showMyDialog();
 
+                    },
+                    child: Text('Calculate BMI', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
