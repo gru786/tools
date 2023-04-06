@@ -55,9 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Container(
                         height: screenHeight * 0.2,
                         padding: EdgeInsets.only(right: 5, bottom: 5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+
                         child: Card(
 
                           elevation: 4,
@@ -90,9 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       padding: EdgeInsets.only(left: 5, bottom: 5),
                       height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+
                       child: Card(
                         elevation: 5,
                         color:Colors.grey.shade800,
@@ -127,37 +123,37 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(right: 5, bottom: 5, top: 5),
-                      height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Card(
-                        elevation: 5,
-                        color: Colors.grey.shade800,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              height: 5,
-                            ),
-                            IconButton(
-                              icon: Icon(
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.pushNamed(context, '/bmi_calculator');
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(right: 5, bottom: 5, top: 5),
+                        height: screenHeight * 0.2,
+
+                        child: Card(
+                          elevation: 5,
+                          color: Colors.grey.shade800,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Icon(
                                 Icons.scale,
                                 size: 60,
                                 color: Colors.lightGreenAccent,
                               ),
-                              onPressed: () {},
-                            ),
-                            Text(
-                              'BMI Calculator',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
+                              Text(
+                                'BMI Calculator',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -166,9 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       padding: EdgeInsets.only(left: 5, bottom: 5, top: 5),
                       height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+
                       child: Card(
                         elevation: 5,
                         color: Colors.grey.shade800,
@@ -206,9 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       padding: EdgeInsets.only(right: 5, bottom: 5, top: 5),
                       height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+
                       child: Card(
                         elevation: 5,
                         color: Colors.grey.shade800,
@@ -242,9 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       padding: EdgeInsets.only(left: 5, bottom: 5, top: 5),
                       height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+
                       child: Card(
                         elevation: 5,
                         color: Colors.grey.shade800,
@@ -282,9 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       padding: EdgeInsets.only(right: 5, bottom: 5, top: 5),
                       height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+
                       child: Card(
                         elevation: 5,
                         color:Colors.grey.shade800,
@@ -318,9 +306,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       padding: EdgeInsets.only(left: 5, bottom: 5, top: 5),
                       height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+
                       child: Card(
                         elevation: 5,
                         color: Colors.grey.shade800,
@@ -359,9 +345,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       padding: EdgeInsets.only(right: 5, bottom: 5, top: 5),
                       height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+
                       child: Card(
                         elevation: 5,
                         color:Colors.grey.shade800,
@@ -395,9 +379,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       padding: EdgeInsets.only(left: 5, bottom: 5, top: 5),
                       height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+
                       child: Card(
                         elevation: 5,
                         color: Colors.grey.shade800,

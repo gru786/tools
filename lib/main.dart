@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tools/screens/bmi_calculator_screen.dart';
 import 'package:tools/screens/home_screen.dart';
 import 'package:tools/screens/password_generator_screen.dart';
 
@@ -23,6 +24,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/' : (context) =>  HomeScreen(),
         '/password_generator' : (context) => PasswordGeneratorScreen(),
+        '/bmi_calculator' : (context) => BmiCalculatorScreen(),
 
       },
       debugShowCheckedModeBanner: false,

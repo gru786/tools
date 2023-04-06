@@ -113,9 +113,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
               Container(
                 padding: EdgeInsets.all(4),
                 height: screenHeight * 0.1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+
                 child: Card(
                   color: Colors.grey.shade800,
                   elevation: 4,
@@ -142,9 +140,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
               Container(
                 padding: EdgeInsets.all(4),
                 height: screenHeight * 0.1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+
                 child: Card(
                   color: Colors.grey.shade800,
                   elevation: 4,
@@ -171,9 +167,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
               Container(
                 padding: EdgeInsets.all(4),
                 height: screenHeight * 0.1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+
                 child: Card(
                   color: Colors.grey.shade800,
                   elevation: 4,
@@ -200,9 +194,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
               Container(
                 padding: EdgeInsets.all(4),
                 height: screenHeight * 0.1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+
                 child: Card(
                   color: Colors.grey.shade800,
                   elevation: 4,
@@ -232,7 +224,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                 children: [
                   Expanded(
                     flex: 6,
-                    child: Slider(
+                    child: Slider.adaptive(
                       value: sliderValue,
                       onChanged: (val) {
                         setState(() {
@@ -240,13 +232,10 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                         });
                       },
                       label: (sliderValue * 30).toString(),
-                      mouseCursor: MouseCursor.defer,
-                      overlayColor:
-                          MaterialStatePropertyAll<Color>(Colors.black26),
+
+
                       divisions: 30,
-                      thumbColor: Colors.black,
-                      activeColor: Colors.grey.shade900,
-                      inactiveColor: Colors.grey.shade700,
+
                     ),
                   ),
                   Expanded(
