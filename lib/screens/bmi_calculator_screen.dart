@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BmiCalculatorScreen extends StatefulWidget {
@@ -14,29 +13,47 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
   double weight = 50;
   double age = 20;
 
+  //pop up
   Future<void> _showMyDialog() async {
-    double height = (sliderValue *100 + 100)/100;
-    print(weight);
-    print(height);
+    double height = (sliderValue * 100 + 100) / 100;
     double bmi = weight / (height * height);
-    print(bmi);
+
+    //limiting bmi to two decimal places only
+    int temp = (bmi * 100).toInt();
+    bmi = temp / 100;
+
+    String msg = '';
+    if (bmi < 18.5) {
+      msg = "You are underweight.";
+    } else if (bmi >= 18.5 && bmi < 25.0) {
+      msg = "You have a healty weight.";
+    } else {
+      msg = "You are overweight.";
+    }
+
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Your BMI result!', style: TextStyle(fontSize: 18),),
+          title: const Text(
+            'Your BMI result!',
+            style: TextStyle(fontSize: 18),
+          ),
           content: SingleChildScrollView(
             child: ListBody(
-              children:  <Widget>[
-                Text(bmi.toString(), style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                Text('Would you like to approve of this message?'),
+              children: <Widget>[
+                Text(
+                  bmi.toString(),
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                Text(msg),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Approve'),
+              child: const Text('Okay'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -46,6 +63,7 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
@@ -95,7 +113,9 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                               Icon(
                                 Icons.female_sharp,
                                 size: 85,
-                                color: Colors.white,
+                                color: femaleSelected
+                                    ? Colors.lightGreenAccent
+                                    : Colors.white,
                               ),
                               Text('Female'),
                             ],
@@ -124,7 +144,9 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                               Icon(
                                 Icons.male_sharp,
                                 size: 85,
-                                color: Colors.white,
+                                color: femaleSelected
+                                    ? Colors.white
+                                    : Colors.lightGreenAccent,
                               ),
                               Text('Male'),
                             ],
@@ -208,7 +230,8 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                                 children: [
                                   ElevatedButton(
                                     style: ButtonStyle(
-                                      elevation: MaterialStatePropertyAll<double>(2),
+                                      elevation:
+                                          MaterialStatePropertyAll<double>(2),
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -219,7 +242,8 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                                   ),
                                   ElevatedButton(
                                     style: ButtonStyle(
-                                      elevation: MaterialStatePropertyAll<double>(2),
+                                      elevation:
+                                          MaterialStatePropertyAll<double>(2),
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -273,7 +297,8 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                                 children: [
                                   ElevatedButton(
                                     style: ButtonStyle(
-                                      elevation: MaterialStatePropertyAll<double>(2),
+                                      elevation:
+                                          MaterialStatePropertyAll<double>(2),
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -284,7 +309,8 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                                   ),
                                   ElevatedButton(
                                     style: ButtonStyle(
-                                      elevation: MaterialStatePropertyAll<double>(2),
+                                      elevation:
+                                          MaterialStatePropertyAll<double>(2),
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -309,15 +335,20 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                 children: [
                   ElevatedButton(
                     style: ButtonStyle(
-                      fixedSize: MaterialStatePropertyAll<Size>(Size(200, screenHeight * 0.04)),
+                      fixedSize: MaterialStatePropertyAll<Size>(
+                          Size(200, screenHeight * 0.04)),
                       elevation: MaterialStatePropertyAll<double>(3),
-                      padding: MaterialStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 20, vertical: 3)),
+                      padding: MaterialStatePropertyAll<EdgeInsets>(
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 3)),
                     ),
                     onPressed: () {
                       _showMyDialog();
-
                     },
-                    child: Text('Calculate BMI', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    child: Text(
+                      'Calculate BMI',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ],
               ),

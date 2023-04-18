@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -8,20 +7,21 @@ class PasswordGeneratorScreen extends StatefulWidget {
   const PasswordGeneratorScreen({Key? key}) : super(key: key);
 
   @override
-  State<PasswordGeneratorScreen> createState() => _PasswordGeneratorScreenState();
+  State<PasswordGeneratorScreen> createState() =>
+      _PasswordGeneratorScreenState();
 }
 
 class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
   var lowCaseToChoose = "abcdefghijklmnopqrstuvxyz";
   var upCaseToChoose = "ABCDEFGHIJKLMNOPQRSTUVXYZ";
   var numbersToChoose = "0123456789";
-  var specialCharToChoose =  "!@#\$%^&*()_-~";
+  var specialCharToChoose = "!@#\$%^&*()_-~";
   bool upperCase = true;
   bool lowerCase = false;
   bool numbers = false;
   bool symbols = false;
 
-  double sliderValue = 1/30;
+  double sliderValue = 1 / 30;
   String generatedPassword = '';
   TextEditingController txtPasswordGenerated = TextEditingController();
 
@@ -32,7 +32,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
     int rand = 0;
     print(sliderVal);
     while (sliderVal > 0) {
-      if(!symbols && !numbers && !lowerCase && !upperCase){
+      if (!symbols && !numbers && !lowerCase && !upperCase) {
         break;
       }
 
@@ -41,43 +41,34 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
         //print(rand);
         generatedPassword += upCaseToChoose[rand].toString();
         sliderVal--;
-        if(sliderVal <= 0){
+        if (sliderVal <= 0) {
           break;
         }
-
       }
       if (lowerCase) {
         rand = Random().nextInt(lowCaseToChoose.length);
         generatedPassword += lowCaseToChoose[rand].toString();
         sliderVal--;
-        if(sliderVal <= 0){
+        if (sliderVal <= 0) {
           break;
         }
-
       }
       if (numbers) {
         rand = Random().nextInt(numbersToChoose.length);
         generatedPassword += numbersToChoose[rand].toString();
         sliderVal--;
-        if(sliderVal <= 0){
+        if (sliderVal <= 0) {
           break;
         }
-
       }
       if (symbols) {
         rand = Random().nextInt(specialCharToChoose.length);
         generatedPassword += specialCharToChoose[rand].toString();
         sliderVal--;
-        if(sliderVal <= 0){
+        if (sliderVal <= 0) {
           break;
         }
-
       }
-
-
-
-
-
     }
 
     print(generatedPassword);
@@ -113,7 +104,6 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
               Container(
                 padding: EdgeInsets.all(4),
                 height: screenHeight * 0.1,
-
                 child: Card(
                   color: Colors.grey.shade800,
                   elevation: 4,
@@ -129,7 +119,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                     trailing: upperCase
                         ? Icon(
                             Icons.check_circle,
-                            color: CupertinoColors.activeGreen,
+                            color: Colors.lightGreenAccent,
                           )
                         : Icon(Icons.circle_outlined),
                   ),
@@ -140,7 +130,6 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
               Container(
                 padding: EdgeInsets.all(4),
                 height: screenHeight * 0.1,
-
                 child: Card(
                   color: Colors.grey.shade800,
                   elevation: 4,
@@ -156,7 +145,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                     trailing: lowerCase
                         ? Icon(
                             Icons.check_circle,
-                            color: CupertinoColors.activeGreen,
+                            color: Colors.lightGreenAccent,
                           )
                         : Icon(Icons.circle_outlined),
                   ),
@@ -167,7 +156,6 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
               Container(
                 padding: EdgeInsets.all(4),
                 height: screenHeight * 0.1,
-
                 child: Card(
                   color: Colors.grey.shade800,
                   elevation: 4,
@@ -183,7 +171,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                     trailing: numbers
                         ? Icon(
                             Icons.check_circle,
-                            color: CupertinoColors.activeGreen,
+                            color: Colors.lightGreenAccent,
                           )
                         : Icon(Icons.circle_outlined),
                   ),
@@ -194,7 +182,6 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
               Container(
                 padding: EdgeInsets.all(4),
                 height: screenHeight * 0.1,
-
                 child: Card(
                   color: Colors.grey.shade800,
                   elevation: 4,
@@ -210,7 +197,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                     trailing: symbols
                         ? Icon(
                             Icons.check_circle,
-                            color: CupertinoColors.activeGreen,
+                            color: Colors.lightGreenAccent,
                           )
                         : Icon(Icons.circle_outlined),
                   ),
@@ -232,10 +219,7 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                         });
                       },
                       label: (sliderValue * 30).toString(),
-
-
                       divisions: 30,
-
                     ),
                   ),
                   Expanded(
@@ -283,8 +267,10 @@ class _PasswordGeneratorScreenState extends State<PasswordGeneratorScreen> {
                             const SnackBar(
                               elevation: 5,
                               backgroundColor: Color(0xff000000),
-                              content:
-                                  Text('Password copied to your clipboard!', style:TextStyle(color: Colors.white),),
+                              content: Text(
+                                'Password copied to your clipboard!',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           );
                         });

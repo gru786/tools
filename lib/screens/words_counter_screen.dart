@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ReminderScreen extends StatefulWidget {
-  const ReminderScreen({Key? key}) : super(key: key);
+class WordsCounterScreen extends StatefulWidget {
+  const WordsCounterScreen({Key? key}) : super(key: key);
 
   @override
-  State<ReminderScreen> createState() => _ReminderScreenState();
+  State<WordsCounterScreen> createState() => _WordsCounterScreenState();
 }
 
-class _ReminderScreenState extends State<ReminderScreen> {
+class _WordsCounterScreenState extends State<WordsCounterScreen> {
   TextEditingController txtWordCounterText = TextEditingController();
 
   countWords() {
