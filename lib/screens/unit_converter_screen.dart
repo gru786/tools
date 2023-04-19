@@ -208,27 +208,28 @@ class _UnitConverterScreenState extends State<UnitConverterScreen> {
               ),
               Card(
                 elevation: 4,
-                child: TextField(
-                  onChanged: (String s) {
-                    fromChanged = true;
-                  },
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  controller: txtFromTextEditingController,
-                  maxLines: 1,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  decoration: InputDecoration(
-                    labelStyle:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    hintStyle: TextStyle(fontSize: 16),
-                    hintText:
-                        'Enter ${measures[chipValue]} in ${units[chipValue][0]}',
-                    labelText: '${units[chipValue][0]}',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: TextField(
+                    onChanged: (String s) {
+                      fromChanged = true;
+                    },
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    controller: txtFromTextEditingController,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    decoration: InputDecoration(
+                      labelStyle:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      hintStyle: TextStyle(fontSize: 16),
+                      hintText:
+                          'Enter ${measures[chipValue]} in ${units[chipValue][0]}',
+                      labelText: '${units[chipValue][0]}',
+                      border: InputBorder.none,
                     ),
                   ),
                 ),
@@ -238,27 +239,28 @@ class _UnitConverterScreenState extends State<UnitConverterScreen> {
               ),
               Card(
                 elevation: 4,
-                child: TextField(
-                  onChanged: (String s) {
-                    fromChanged = false;
-                  },
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  controller: txtToTextEditingController,
-                  maxLines: 1,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  decoration: InputDecoration(
-                    labelStyle:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    hintStyle: TextStyle(fontSize: 16),
-                    hintText:
-                        'Enter ${measures[chipValue]} in ${units[chipValue][1]}',
-                    labelText: '${units[chipValue][1]}',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: TextField(
+                    onChanged: (String s) {
+                      fromChanged = false;
+                    },
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    controller: txtToTextEditingController,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    decoration: InputDecoration(
+                      labelStyle:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      hintStyle: TextStyle(fontSize: 16),
+                      hintText:
+                          'Enter ${measures[chipValue]} in ${units[chipValue][1]}',
+                      labelText: '${units[chipValue][1]}',
+                      border: InputBorder.none,
                     ),
                   ),
                 ),

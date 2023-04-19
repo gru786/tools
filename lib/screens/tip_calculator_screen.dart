@@ -50,15 +50,17 @@ class _TipCalculatorScreenState extends State<TipCalculatorScreen> {
             children: [
               Card(
                 elevation: 4,
-                child: TextField(
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  controller: txtTipController,
-                  maxLines: 1,
-                  decoration: InputDecoration(
-                    hintText: 'Enter total bill here',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    controller: txtTipController,
+                    maxLines: 1,
+                    decoration: InputDecoration(
+                      hintText: 'Enter total bill here',
+                      border: InputBorder.none,
                     ),
                   ),
                 ),
@@ -66,142 +68,145 @@ class _TipCalculatorScreenState extends State<TipCalculatorScreen> {
               const SizedBox(
                 height: 20,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+              Container(
+                height: screenHeight * 0.1,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.05;
+                          calculateTip();
+                        },
+                        child: Text('5%'),
                       ),
-                      onPressed: () {
-                        percent = 0.05;
-                        calculateTip();
-                      },
-                      child: Text('5%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+                      const SizedBox(
+                        width: 5,
                       ),
-                      onPressed: () {
-                        percent = 0.1;
-                        calculateTip();
-                      },
-                      child: Text('10%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.1;
+                          calculateTip();
+                        },
+                        child: Text('10%'),
                       ),
-                      onPressed: () {
-                        percent = 0.15;
-                        calculateTip();
-                      },
-                      child: Text('15%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+                      const SizedBox(
+                        width: 5,
                       ),
-                      onPressed: () {
-                        percent = 0.2;
-                        calculateTip();
-                      },
-                      child: Text('20%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.15;
+                          calculateTip();
+                        },
+                        child: Text('15%'),
                       ),
-                      onPressed: () {
-                        percent = 0.25;
-                        calculateTip();
-                      },
-                      child: Text('25%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+                      const SizedBox(
+                        width: 5,
                       ),
-                      onPressed: () {
-                        percent = 0.3;
-                        calculateTip();
-                      },
-                      child: Text('30%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.2;
+                          calculateTip();
+                        },
+                        child: Text('20%'),
                       ),
-                      onPressed: () {
-                        percent = 0.35;
-                        calculateTip();
-                      },
-                      child: Text('35%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+                      const SizedBox(
+                        width: 5,
                       ),
-                      onPressed: () {
-                        percent = 0.4;
-                        calculateTip();
-                      },
-                      child: Text('40%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.25;
+                          calculateTip();
+                        },
+                        child: Text('25%'),
                       ),
-                      onPressed: () {
-                        percent = 0.5;
-                        calculateTip();
-                      },
-                      child: Text('50%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll<double>(10),
+                      const SizedBox(
+                        width: 5,
                       ),
-                      onPressed: () {
-                        percent = 0.6;
-                        calculateTip();
-                      },
-                      child: Text('60%'),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                  ],
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.3;
+                          calculateTip();
+                        },
+                        child: Text('30%'),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.35;
+                          calculateTip();
+                        },
+                        child: Text('35%'),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.4;
+                          calculateTip();
+                        },
+                        child: Text('40%'),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.5;
+                          calculateTip();
+                        },
+                        child: Text('50%'),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: MaterialStatePropertyAll<double>(10),
+                        ),
+                        onPressed: () {
+                          percent = 0.6;
+                          calculateTip();
+                        },
+                        child: Text('60%'),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(

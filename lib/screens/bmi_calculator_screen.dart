@@ -18,7 +18,6 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
     double height = (sliderValue * 100 + 100) / 100;
     double bmi = weight / (height * height);
 
-    //limiting bmi to two decimal places only
     int temp = (bmi * 100).toInt();
     bmi = temp / 100;
 
@@ -26,10 +25,11 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
     if (bmi < 18.5) {
       msg = "You are underweight.";
     } else if (bmi >= 18.5 && bmi < 25.0) {
-      msg = "You have a healty weight.";
+      msg = "You have a healthy weight.";
     } else {
       msg = "You are overweight.";
     }
+
 
     return showDialog<void>(
       context: context,
@@ -42,14 +42,16 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
           ),
           content: SingleChildScrollView(
             child: ListBody(
+
               children: <Widget>[
                 Text(
                   bmi.toString(),
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 Text(msg),
-              ],
-            ),
+
+
+            ],),
           ),
           actions: <Widget>[
             TextButton(
@@ -217,19 +219,33 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              Text(
-                                weight.toInt().toString(),
-                                style: TextStyle(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Text(
+                                    weight.toInt().toString(),
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const Text(
+                                    ' kg',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
                               ),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   ElevatedButton(
-                                    style: ButtonStyle(
+                                    style: const ButtonStyle(
                                       elevation:
                                           MaterialStatePropertyAll<double>(2),
                                     ),
@@ -238,10 +254,10 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                                         weight = weight - 1.0;
                                       });
                                     },
-                                    child: Icon(Icons.remove),
+                                    child: const Icon(Icons.remove),
                                   ),
                                   ElevatedButton(
-                                    style: ButtonStyle(
+                                    style: const ButtonStyle(
                                       elevation:
                                           MaterialStatePropertyAll<double>(2),
                                     ),
@@ -250,7 +266,7 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                                         weight = weight + 1.0;
                                       });
                                     },
-                                    child: Icon(Icons.add),
+                                    child: const Icon(Icons.add),
                                   ),
                                 ],
                               ),
@@ -284,12 +300,26 @@ class _BmiCalculatorScreenState extends State<BmiCalculatorScreen> {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              Text(
-                                age.toInt().toString(),
-                                style: TextStyle(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Text(
+                                    '${age.toInt().toString()}',
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    ' years',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
                               ),
                               Row(
                                 mainAxisAlignment:

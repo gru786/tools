@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tools/screens/age_calculator_screen.dart';
 import 'package:tools/screens/bmi_calculator_screen.dart';
+import 'package:tools/screens/calculator_screen.dart';
 import 'package:tools/screens/discount_calculator_screen.dart';
 import 'package:tools/screens/emi_calculator_screen.dart';
 import 'package:tools/screens/home_screen.dart';
@@ -40,6 +41,7 @@ class _MyAppState extends State<MyApp> {
         '/emi_calculator_screen': (context) => EmiCalculatorScreen(),
         '/discount_calculator_screen': (context) => DiscountCalculatorScreen(),
         '/tip_calculator_screen': (context) => TipCalculatorScreen(),
+        '/calculator_screen': (context) => CalculatorScreen(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

@@ -126,16 +126,17 @@ class _EmiCalculatorScreenState extends State<EmiCalculatorScreen> {
               ),
               Card(
                 elevation: 4,
-                child: TextField(
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  controller: txttotalAmountController,
-                  maxLines: 1,
-                  decoration: InputDecoration(
-                    hintText: 'Enter total loan amount here',
-                    labelText: 'Amount',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    controller: txttotalAmountController,
+                    maxLines: 1,
+                    decoration: const InputDecoration(
+                      hintText: 'Enter total loan amount here',
+                      labelText: 'Amount',
+                      border: InputBorder.none,
                     ),
                   ),
                 ),
@@ -145,16 +146,17 @@ class _EmiCalculatorScreenState extends State<EmiCalculatorScreen> {
               ),
               Card(
                 elevation: 4,
-                child: TextField(
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  controller: txtRateController,
-                  maxLines: 1,
-                  decoration: InputDecoration(
-                    labelText: 'Interest',
-                    hintText: 'Enter rate of interest per annum',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    controller: txtRateController,
+                    maxLines: 1,
+                    decoration: InputDecoration(
+                      labelText: 'Interest',
+                      hintText: 'Enter rate of interest per annum',
+                      border: InputBorder.none,
                     ),
                   ),
                 ),
@@ -164,16 +166,17 @@ class _EmiCalculatorScreenState extends State<EmiCalculatorScreen> {
               ),
               Card(
                 elevation: 4,
-                child: TextField(
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  controller: txtTimeController,
-                  maxLines: 1,
-                  decoration: InputDecoration(
-                    labelText: 'Time',
-                    hintText: 'Enter total time in years',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    controller: txtTimeController,
+                    maxLines: 1,
+                    decoration: InputDecoration(
+                      labelText: 'Time',
+                      hintText: 'Enter total time in years',
+                      border: InputBorder.none,
                     ),
                   ),
                 ),

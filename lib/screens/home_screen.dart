@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_internet_speed_test/flutter_internet_speed_test.dart';
 import 'package:qr_bar_code_scanner_dialog/qr_bar_code_scanner_dialog.dart';
+
+import 'package:tools/screens/calculator_screen.dart';
+import 'package:tools/screens/net_speed_screen.dart';
+import 'package:torch_control/torch_control.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -9,9 +15,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool torchOn = false;
   final _qrBarCodeScannerDialogPlugin = QrBarCodeScannerDialog();
   double elevation = 4;
   String? code;
+  void initializeTorch() async{
+    await TorchControl.ready();
+  }
+
+  @override
+  void initState()  {
+    initializeTorch();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
@@ -100,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: screenHeight * 0.2,
                       child: GestureDetector(
                         onTap: () {
-                          //TODO: Calculator
+                          Navigator.pushNamed(context, '/calculator_screen');
                         },
                         child: Card(
                           elevation: elevation,
@@ -255,8 +271,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             context: context,
                             onCode: (code) {
                               setState(
-                                () {
+                                () async {
                                   this.code = code;
+                                  //print(code);
+                                  Uri phoneno = Uri.parse(this.code!);
+
+                                  await launchUrl(phoneno);
                                 },
                               );
                             },
@@ -450,7 +470,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Row(
                 children: [
-                  // reminder
+                  // words counter
                   Expanded(
                     child: Container(
                       padding:
@@ -515,6 +535,98 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Text(
                                 'EMI Calculator',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+
+              Row(
+                children: [
+                  // torch
+                  Expanded(
+                    child: Container(
+                      padding:
+                      const EdgeInsets.only(right: 5, bottom: 5, top: 5),
+                      height: screenHeight * 0.2,
+                      child: GestureDetector(
+                        onTap: () {
+                         setState(() {
+                           if(TorchControl.isOn){
+                              TorchControl.turnOff();
+                              torchOn = false;
+                           }
+                           else{
+                             TorchControl.turnOn();
+                             torchOn = true;
+
+                           }
+                         });
+
+                        },
+                        child: Card(
+                          elevation: elevation,
+                          color: Colors.grey.shade800,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children:  [
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Icon(
+                                torchOn ? Icons.flashlight_on_outlined : Icons.flashlight_off_outlined,
+                                size: 60,
+                                color: torchOn ? Colors.white : Colors.lightGreenAccent,
+                              ),
+                              Text(
+                                'Torch',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  //emi_calculator
+                  Expanded(
+                    child: Container(
+                      padding:
+                      const EdgeInsets.only(left: 5, bottom: 5, top: 5),
+                      height: screenHeight * 0.2,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (c) => NetSpeedTestScreen(),),);
+                        },
+                        child: Card(
+                          elevation: elevation,
+                          color: Colors.grey.shade800,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: const [
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Icon(
+                                Icons.speed,
+                                size: 60,
+                                color: Colors.lightGreenAccent,
+                              ),
+                              Text(
+                                'Internet Speed',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 15,
